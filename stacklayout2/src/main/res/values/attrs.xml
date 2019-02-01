@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="StackLayout">
+        <attr name="peekViewCount" format="integer"/>
+        <attr name="peekSize" format="integer"/>
+        <attr name="upperExtremeRotation" format="integer"/>
+        <attr name="lowerExtremeRotation" format="integer"/>
+        <attr name="previousViewVisibility" format="float"/>
+        <attr name="persistRotation" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="VerticalStackLayout" parent="StackLayout">
+        <attr name="peekViewCount"/>
+        <attr name="peekSize"/>
+        <attr name="upperExtremeRotation"/>
+        <attr name="lowerExtremeRotation"/>
+        <attr name="previousViewVisibility"/>
+        <attr name="persistRotation"/>
+    </declare-styleable>
+
+    <declare-styleable name="HorizontalStackLayout" parent="StackLayout">
+        <attr name="peekViewCount"/>
+        <attr name="peekSize"/>
+        <attr name="upperExtremeRotation"/>
+        <attr name="lowerExtremeRotation"/>
+        <attr name="previousViewVisibility"/>
+        <attr name="persistRotation"/>
+    </declare-styleable>
+</resources>

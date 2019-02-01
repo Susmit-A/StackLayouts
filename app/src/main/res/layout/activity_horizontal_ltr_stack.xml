@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.susmit.stacklayout2.HorizontalStackLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    app:peekViewCount="5"
+    app:peekSize="20"
+    app:upperExtremeRotation="2"
+    app:lowerExtremeRotation="2"
+    app:previousViewVisibility="0.25">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:src="@android:color/holo_red_light"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:src="@android:color/holo_green_light"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:src="@android:color/holo_blue_light"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:src="@android:color/holo_red_light"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:src="@android:color/holo_green_light"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:src="@android:color/holo_blue_light"/>
+
+</com.susmit.stacklayout2.HorizontalStackLayout>
