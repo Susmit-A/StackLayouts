@@ -7,6 +7,10 @@ Please note that this library is currently supported on android versions 5.0(Lol
 This library works best when all child views are of same size.
 Using child views of different sizes may lead to unpredictable behaviour.
 
+## Samples:
+![Demo Horizontal LTR Stack](https://media.giphy.com/media/2Y9DBK8QDDMEJ213xp/giphy.gif)    ![Demo Vertical Stack](https://media.giphy.com/media/eB5EUZPpSGnI8Avuk9/giphy.gif)    ![Demo Horizontal RTL Stack](https://media.giphy.com/media/oFRwv9YGRKj16RAIAQ/giphy.gif)
+
+
 Integration with existing project
 ---
 
@@ -33,10 +37,49 @@ dependencies {
 ```
 
 ### Basic Usage
-#### XML (Horizontal Stack)
+#### XML (Horizontal LTR Stack)
 ```xml
 ...
 <com.susmit.stacklayout2.HorizontalStackLayout
+    ...
+    app:peekViewCount="5"
+    app:peekSize="20"
+    app:upperExtremeRotation="2"
+    app:lowerExtremeRotation="2"
+    app:previousViewVisibility="0.25">
+    
+    ...
+    	Child Views
+    ...
+    
+</com.susmit.stacklayout2.HorizontalStackLayout>
+...
+```
+
+#### XML (Horizontal RTL Stack)
+```xml
+...
+<com.susmit.stacklayout2.HorizontalStackLayout
+    ...
+    android:layoutDirection="rtl"
+    app:peekViewCount="5"
+    app:peekSize="20"
+    app:upperExtremeRotation="2"
+    app:lowerExtremeRotation="2"
+    app:previousViewVisibility="0.25">
+    
+    ...
+    	Child Views
+    ...
+    
+</com.susmit.stacklayout2.HorizontalStackLayout>
+...
+```
+
+#### XML (Vertical Stack)
+```xml
+...
+<com.susmit.stacklayout2.VerticalStackLayout
     ...
     app:peekViewCount="5"
     app:peekSize="20"
