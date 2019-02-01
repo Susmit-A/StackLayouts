@@ -3,7 +3,7 @@ package com.susmit.stacklayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class HorizontalLtrStackActivity extends AppCompatActivity {
+class HorizontalLtrStackActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
