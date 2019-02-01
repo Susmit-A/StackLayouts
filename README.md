@@ -1,5 +1,5 @@
 # Stack Layout
-A simple library to help you arrange views in a horizontal or vertical stack.
+A simple Android library to help you arrange views in a horizontal or vertical stack.
 
 
 Please note that this library is currently supported on android versions 5.0(Lollipop) and above.
