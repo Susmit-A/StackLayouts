@@ -8,8 +8,7 @@ This library works best when all child views are of same size.
 Using child views of different sizes may lead to unpredictable behaviour.
 
 ## Samples:
-![Demo Horizontal LTR Stack](https://media.giphy.com/media/2Y9DBK8QDDMEJ213xp/giphy.gif)    ![Demo Vertical Stack](https://media.giphy.com/media/eB5EUZPpSGnI8Avuk9/giphy.gif)    ![Demo Horizontal RTL Stack](https://media.giphy.com/media/oFRwv9YGRKj16RAIAQ/giphy.gif)
-
+![Demo Horizontal LTR Stack](https://media.giphy.com/media/2Y9DBK8QDDMEJ213xp/giphy.gif)    ![Demo Vertical Stack](https://media.giphy.com/media/eB5EUZPpSGnI8Avuk9/giphy.gif)    ![Demo Horizontal RTL Stack](https://media.giphy.com/media/oFRwv9YGRKj16RAIAQ/giphy.gif) 
 
 Integration with existing project
 ---
