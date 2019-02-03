@@ -299,4 +299,26 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
         return false;
     }
 
+    @Override
+    public void addView(View child) {
+        super.addView(child);
+
+        if(getChildCount() < peekViewCount || getChildCount()==1) return;
+        View prevChild = getChildAt(getChildCount()-2);
+        if(getChildCount()==2) {
+            child.setY(prevChild.getY());
+            if(getLayoutDirection()==LAYOUT_DIRECTION_LTR)
+                child.setX(prevChild.getX() + peekSize);
+            else
+                child.setX(prevChild.getX() - peekSize);
+        }
+        else{
+            View secondPrevChild = getChildAt(getChildCount() - 3);
+            child.setY(prevChild.getY());
+            if(getLayoutDirection()==LAYOUT_DIRECTION_LTR)
+                child.setX(prevChild.getX() + (prevChild.getX() - secondPrevChild.getX()));
+            else
+                child.setX(prevChild.getX() - (prevChild.getX() - secondPrevChild.getX()));
+        }
+    }
 }
