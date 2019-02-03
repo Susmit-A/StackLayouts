@@ -253,4 +253,20 @@ public class VerticalStackLayout extends LinearLayout implements GestureDetector
         return false;
     }
 
+    @Override
+    public void addView(View child) {
+        super.addView(child);
+
+        if(getChildCount() < peekViewCount || getChildCount()==1) return;
+        View prevChild = getChildAt(getChildCount()-2);
+        if(getChildCount()==2) {
+            child.setX(prevChild.getX());
+            child.setY(prevChild.getY() + peekSize);
+        }
+        else{
+            View secondPrevChild = getChildAt(getChildCount() - 3);
+            child.setX(prevChild.getX());
+            child.setY(prevChild.getY() + (prevChild.getY() - secondPrevChild.getY()));
+        }
+    }
 }

@@ -5,7 +5,11 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.*;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+
+import java.util.List;
 
 public class HorizontalStackLayout extends LinearLayout implements GestureDetector.OnGestureListener{
 
@@ -69,13 +73,13 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
 
     public HorizontalStackLayout(Context context) {
         super(context);
-        setOrientation(HORIZONTAL);
+        //setOrientation(HORIZONTAL);
         gestureDetector = new GestureDetector(context, this);
     }
 
     public HorizontalStackLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setOrientation(HORIZONTAL);
+        //setOrientation(HORIZONTAL);
 
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
@@ -97,7 +101,7 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
 
     public HorizontalStackLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setOrientation(HORIZONTAL);
+        //setOrientation(HORIZONTAL);
 
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
@@ -119,7 +123,7 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
 
     public HorizontalStackLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        setOrientation(HORIZONTAL);
+        //setOrientation(HORIZONTAL);
 
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
@@ -138,6 +142,7 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
         }
         gestureDetector = new GestureDetector(context, this);
     }
+
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -167,6 +172,7 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
             else
                 child.layout(prevChild.getLeft() - peekSize, child.getTop(), prevChild.getLeft() - peekSize + child.getWidth(), child.getBottom());
         }
+
     }
 
 

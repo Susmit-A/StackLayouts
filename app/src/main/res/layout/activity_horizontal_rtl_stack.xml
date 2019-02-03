@@ -11,7 +11,8 @@
     app:peekSize="100"
     app:upperExtremeRotation="2"
     app:lowerExtremeRotation="2"
-    app:previousViewVisibility="0.75">
+    app:previousViewVisibility="0.75"
+    android:id="@+id/hrtl">
 
     <ImageView
         android:layout_width="200dp"

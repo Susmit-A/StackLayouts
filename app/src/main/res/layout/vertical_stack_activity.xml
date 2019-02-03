@@ -10,7 +10,8 @@
     app:peekSize="20"
     app:upperExtremeRotation="2"
     app:lowerExtremeRotation="2"
-    app:previousViewVisibility="0.5">
+    app:previousViewVisibility="0.5"
+    android:id="@+id/vsl">
 
     <ImageView
         android:layout_width="200dp"
