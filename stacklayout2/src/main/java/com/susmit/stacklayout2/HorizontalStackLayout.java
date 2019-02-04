@@ -178,13 +178,6 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //Keep rotation after user is no longer interacting with the screen?
-        if(!isPersistRotation() && event.getAction()==MotionEvent.ACTION_UP){
-            int childCount = getChildCount();
-            for(int i=0;i<childCount;i++)
-                getChildAt(i).setRotationY(0);
-
-        }
         return gestureDetector.onTouchEvent(event);
     }
 
@@ -320,5 +313,52 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
             else
                 child.setX(prevChild.getX() - (prevChild.getX() - secondPrevChild.getX()));
         }
+    }
+
+    @Override
+    public void addView(View child, int index) {
+        super.addView(child, index);
+        float nextX = 0.0f;
+        float nextY = 0.0f;
+        int numChildren = getChildCount();
+        nextY = getChildAt(numChildren - 1).getY();
+
+        if(getLayoutDirection()==LAYOUT_DIRECTION_LTR) {
+            nextX = getChildAt(numChildren - 1).getX() - getChildAt(getChildCount() - 2).getX();
+            nextX += getChildAt(getChildCount() - 1).getX();
+        }else{
+            nextX = - (getChildAt(numChildren - 1).getX() - getChildAt(getChildCount() - 2).getX());
+            nextX -= getChildAt(getChildCount() - 1).getX();
+        }
+        for(int i=getChildCount()-1; i>index; i--){
+            View childView = getChildAt(i);
+            childView.setX(nextX);
+            childView.setY(nextY);
+
+            try {
+                if(getLayoutDirection()==LAYOUT_DIRECTION_LTR) {
+                    nextX = getChildAt(i - 1).getX() - getChildAt(i - 2).getX();
+                    nextX += getChildAt(i - 1).getX();
+                }else{
+                    nextX = - (getChildAt(i - 1).getX() - getChildAt(i - 2).getX());
+                    nextX -= getChildAt(i - 1).getX();
+                }
+            }catch (NullPointerException e){
+                return;
+            }
+        }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        boolean result = gestureDetector.onTouchEvent(ev) && ev.getAction()!=MotionEvent.ACTION_DOWN;
+        //Keep rotation after user is no longer interacting with the screen?
+        if(!isPersistRotation() && ev.getAction()==MotionEvent.ACTION_UP){
+            int childCount = getChildCount();
+            for(int i=0;i<childCount;i++)
+                getChildAt(i).setRotationY(0);
+
+        }
+        return result;
     }
 }

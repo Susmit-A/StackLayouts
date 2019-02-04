@@ -170,13 +170,6 @@ public class VerticalStackLayout extends LinearLayout implements GestureDetector
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //Keep rotation after user is no longer interacting with the screen?
-        if(!isPersistRotation() && event.getAction()==MotionEvent.ACTION_UP){
-            int childCount = getChildCount();
-            for(int i=0;i<childCount;i++)
-                getChildAt(i).setRotationX(0);
-
-        }
         return gestureDetector.onTouchEvent(event);
     }
 
@@ -268,5 +261,42 @@ public class VerticalStackLayout extends LinearLayout implements GestureDetector
             child.setX(prevChild.getX());
             child.setY(prevChild.getY() + (prevChild.getY() - secondPrevChild.getY()));
         }
+    }
+
+    @Override
+    public void addView(View child, int index) {
+        super.addView(child, index);
+
+        int numChildren = getChildCount();
+        float nextX = getChildAt(numChildren - 1).getX();
+
+        float nextY = getChildAt(numChildren - 1).getY() - getChildAt(getChildCount() - 2).getY();
+        nextY += getChildAt(getChildCount()-1).getY();
+
+        for(int i=getChildCount()-1; i>index; i--){
+            View childView = getChildAt(i);
+            childView.setX(nextX);
+            childView.setY(nextY);
+
+            try {
+                nextY = getChildAt(i - 1).getY() - getChildAt(i - 2).getY();
+                nextY += getChildAt(i - 1).getY();
+            }catch (NullPointerException e){
+                return;
+            }
+        }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        boolean result = gestureDetector.onTouchEvent(ev) && ev.getAction()!=MotionEvent.ACTION_DOWN;
+        //Keep rotation after user is no longer interacting with the screen?
+        if(!isPersistRotation() && ev.getAction()==MotionEvent.ACTION_UP){
+            int childCount = getChildCount();
+            for(int i=0;i<childCount;i++)
+                getChildAt(i).setRotationX(0);
+
+        }
+        return result;
     }
 }
