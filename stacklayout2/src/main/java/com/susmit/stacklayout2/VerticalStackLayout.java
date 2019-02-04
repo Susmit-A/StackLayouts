@@ -288,6 +288,42 @@ public class VerticalStackLayout extends LinearLayout implements GestureDetector
     }
 
     @Override
+    public void removeView(View view) {
+        int index = indexOfChild(view);
+        float curX = view.getX();
+        float curY = view.getY();
+        float tempX, tempY;
+        for(int i=index+1; i<getChildCount();i++){
+            View next = getChildAt(i);
+            tempX = next.getX();
+            tempY = next.getY();
+            next.setX(curX);
+            next.setY(curY);
+            curX = tempX;
+            curY = tempY;
+        }
+        super.removeView(view);
+    }
+
+    @Override
+    public void removeViewAt(int index) {
+        View view = getChildAt(index);
+        float curX = view.getX();
+        float curY = view.getY();
+        float tempX, tempY;
+        for(int i=index+1; i<getChildCount();i++){
+            View next = getChildAt(i);
+            tempX = next.getX();
+            tempY = next.getY();
+            next.setX(curX);
+            next.setY(curY);
+            curX = tempX;
+            curY = tempY;
+        }
+        super.removeViewAt(index);
+    }
+
+    @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         boolean result = gestureDetector.onTouchEvent(ev) && ev.getAction()!=MotionEvent.ACTION_DOWN;
         //Keep rotation after user is no longer interacting with the screen?
