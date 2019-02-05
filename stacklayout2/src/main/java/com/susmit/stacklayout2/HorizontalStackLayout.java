@@ -159,7 +159,7 @@ public class HorizontalStackLayout extends LinearLayout implements GestureDetect
             if(i==0) continue;
             View child = getChildAt(i);
             View firstChild = getChildAt(0);
-            child.layout(firstChild.getLeft()+i, firstChild.getTop(), firstChild.getLeft() + child.getWidth() + i, firstChild.getBottom());
+            child.layout(firstChild.getLeft(), firstChild.getTop(), firstChild.getLeft() + child.getWidth(), firstChild.getBottom());
         }
 
         //Draw non-hidden views
